@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+        }
+        h2{
+            margin-left: 200px;
+        }
+        body{
+            background-color: cadetblue;
+        }
+        .divHeader{
+            background-color: green;
+            display: block;
+            width: 150px;
+            height: 1000px;
+            margin:0px;
+            float: left;
+        }
+        a{
+            display: block;
+            height: 50px;
+            font-family:'Courier New', Courier, monospace;
+            font-size: 24px;
+        }
+        img{
+            position: absolute;
+            width:400px; /*40vw*/
+            height:300px; /*30vw*/
+            float: left;
+            } 
+        #div1 {
+            position: absolute;
+            width:400px; /*40vw*/
+            height:300px; /*30vw*/                              
+        }    
+    </style>
+</head>
+<body>
+    <div class="divHeader">
+        <b>
+        <a href="homework1.html">HomeWork 1</a>
+        <a href="homework2.html">HomeWork 2</a>   
+        </b>
+    </div>    
+    <h2>HomeWork 3</h2>
+
+    <div id="div1">
+        <img id="image1" src="Images/tesla1.jpg">
+    </div>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            move_div();
+            //當視窗放大或縮小時呼叫move_div的函式
+            //讓div1置中
+            // $(window).resize(move_div);
+            $(window).on("resize",move_div);
+
+            function move_div() {//置中
+                let windowHeight=$(this).height();
+                let windowWidth=$(this).width();
+                let objHeight=$("#div1").height();
+                let objWidth=$("#div1").width();
+
+                let top=(windowHeight-objHeight)/2;
+                let left=(windowWidth-objWidth)/2;
+
+                $("#div1").css("top",top).css("left",left);
+            }   
+        });  
+
+
+
+            // var ywidth = 550;//最小寬度
+            // $("#div1").each(function(){
+                    // if($(window).width() < ywidth) {//寬度<550 
+                        console.log($(window).width());
+                        console.log($("img").width());
+                        $("#div1").width("40vw");//設寬度
+                        $("img").width("30vw");//設寬度
+                        $("#div1").height("40vw");//設高度
+                        $("img").height("30vw");//設高度
+                    // }; 
+            // });
+        
+    </script>
+</body>
+</html>
